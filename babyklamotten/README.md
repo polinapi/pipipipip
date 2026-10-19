@@ -13,7 +13,11 @@
 | Spalte | Bedeutung |
 |---|---|
 | kategorie | Body, Strampler, Hose, Shirt, Pullover, Jacke, Schlafsack, Mütze, … |
+| farbe | Hauptfarben, mit `/` getrennt |
+| geschlecht | Mädchen / Junge / neutral (nach Farbe und Motiv) |
 | groesse_etikett | was auf dem Schild steht (z. B. `3-6 M`, `68`, `74/80`) |
 | groesse_eu | auf EU-Größe umgerechnet (50, 56, 62, 68, 74, 80, 86, 92, …) |
 | saison | Sommer / Winter / Übergang / ganzjährig |
 | zustand | neu / sehr gut / gut / Gebrauchsspuren |
+
+`python3 statistik.py [paket]` zeigt die Anteile Mädchen/Junge/neutral und die Farben.
