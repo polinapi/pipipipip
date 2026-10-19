@@ -1,9 +1,9 @@
 # Babyklamotten – Katalog für Willhaben-Pakete
 
 ## Ablauf
-1. Pro Stück zwei Fotos: **erst das ganze Teil, dann das Größenschild**.
+1. Pro Stück ein Foto vom ganzen Teil, Größe als Text dazu (Größenschild-Foto optional, dann `--paare`).
 2. Fotos in `fotos/eingang/` legen (oder im Chat schicken).
-3. `python3 komprimieren.py` → `fotos/komprimiert/001_gesamt.jpg`, `001_etikett.jpg`, …
+3. `python3 komprimieren.py` → `fotos/komprimiert/001_gesamt.jpg`, `002_gesamt.jpg`, …
    (max. 1200 px, ohne Metadaten/GPS). Weitermachen ab Stück 25: `--start 25`.
 4. Claude erkennt Art, Farbe, Marke und Größe und trägt alles in `katalog.csv` ein.
 5. Stücke einem Paket zuordnen (Spalte `paket`, z. B. `62-68_sommer`).

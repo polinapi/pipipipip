@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """Komprimiert Fotos aus fotos/eingang/ nach fotos/komprimiert/.
 
-Die Fotos werden nach Dateiname sortiert und paarweise zugeordnet:
-1. Foto = ganzes Kleidungsstück, 2. Foto = Größenschild.
-Ergebnis: 001_gesamt.jpg, 001_etikett.jpg, 002_gesamt.jpg, ...
+Die Fotos werden nach Dateiname sortiert und durchnummeriert:
+001_gesamt.jpg, 002_gesamt.jpg, ...
+Mit --paare: 1. Foto = ganzes Stück, 2. Foto = Größenschild
+(001_gesamt.jpg, 001_etikett.jpg, 002_gesamt.jpg, ...).
 
 - Drehung laut Kamera (EXIF) wird übernommen
 - längste Seite max. 1200 px, JPEG-Qualität 80
 - alle Metadaten (inkl. GPS-Standort) werden entfernt
 
-Aufruf:  python3 komprimieren.py [--start 1] [--einzeln]
-  --start    Nummer des ersten Stücks (zum Weitermachen)
-  --einzeln  keine Paare bilden, nur durchnummerieren
+Aufruf:  python3 komprimieren.py [--start 1] [--paare]
+  --start  Nummer des ersten Stücks (zum Weitermachen)
+  --paare  je zwei Fotos pro Stück (gesamt + Etikett)
 """
 import argparse
 from pathlib import Path
@@ -42,20 +43,20 @@ def komprimieren(quelle: Path, ziel: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--start", type=int, default=1)
-    parser.add_argument("--einzeln", action="store_true")
+    parser.add_argument("--paare", action="store_true")
     args = parser.parse_args()
 
     fotos = sorted(p for p in EINGANG.iterdir() if p.suffix.lower() in ENDUNGEN)
-    if not args.einzeln and len(fotos) % 2:
+    if args.paare and len(fotos) % 2:
         print(f"Achtung: {len(fotos)} Fotos – ungerade Anzahl, letztes Foto hat kein Paar.")
 
     AUSGANG.mkdir(parents=True, exist_ok=True)
     for i, foto in enumerate(fotos):
-        if args.einzeln:
-            name = f"{args.start + i:03d}.jpg"
-        else:
+        if args.paare:
             nummer = args.start + i // 2
             name = f"{nummer:03d}_{'gesamt' if i % 2 == 0 else 'etikett'}.jpg"
+        else:
+            name = f"{args.start + i:03d}_gesamt.jpg"
         ziel = AUSGANG / name
         komprimieren(foto, ziel)
         vorher, nachher = foto.stat().st_size // 1024, ziel.stat().st_size // 1024
