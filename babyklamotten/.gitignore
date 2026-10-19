@@ -1,0 +1,3 @@
+# Originalfotos nicht committen (groß, enthalten Metadaten wie GPS)
+fotos/eingang/*
+!fotos/eingang/.gitkeep
