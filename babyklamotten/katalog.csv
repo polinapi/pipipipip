@@ -1,4 +1,7 @@
 id,kategorie,beschreibung,farbe,marke,groesse_etikett,groesse_eu,saison,zustand,paket,foto_gesamt,foto_etikett,notizen
 001,Hose,"Pumphose/Haremshose aus Feincord, Obst-Print (Kirschen, Melonen, Birnen), dunkelblauer Bund, orange Beinbündchen – vermutlich handgemacht",petrol/bunt,,keine,68 (geschätzt),Herbst/Winter,,,001_gesamt.jpg,,Größe geschätzt; Pumphose wächst mit (ca. 62–74)
-002,Hose,"Leggings mit Minnie-Mouse-Print, breiter Umschlagbund",rosa/schwarz,Disney,62,62,ganzjährig,,,002_gesamt.jpg,,
-003,Hose,"Jogginghose/Sweathose mit Ziertaschen, Rippbund und Beinbündchen",pink/himbeer,,68,68,Übergang/Winter,,,003_gesamt.jpg,,
+002,Hose,"Leggings mit Minnie-Mouse-Print, breiter Umschlagbund",rosa/schwarz,H&M (Disney),62,62,ganzjährig,,,002_gesamt.jpg,,
+003,Hose,"Jogginghose/Sweathose mit Ziertaschen, Rippbund und Beinbündchen",pink/himbeer,Baby Club (C&A),68,68,Übergang/Winter,,,003_gesamt.jpg,,
+004,Hose,"Strampelhose mit Füßen aus Nicki/Velours, elastischer Bund, Ringel",rosa/weiß,,keine,56 (geschätzt),Herbst/Winter,,,004_gesamt.jpg,,Größe geschätzt
+005,Langarmshirt,"Ringel-Langarmshirt, Druckknöpfe an der Schulter, Bündchen an den Ärmeln",lila/pink/beere,Baby Club (C&A),74,74,ganzjährig,,,005_gesamt.jpg,,
+006,T-Shirt,Kurzarm-Poloshirt mit Rüschenkragen und Druckknopfleiste,dunkelblau,Lilly+Sid,3-6 M,62/68,Sommer,,,006_gesamt.jpg,,
