@@ -16,7 +16,7 @@ from PIL import Image, ImageOps
 
 BASIS = Path(__file__).parent
 KACHEL = 600
-ABSTAND = 0
+ABSTAND = 3
 PRO_KOLLAGE = 9
 
 
