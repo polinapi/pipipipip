@@ -33,7 +33,7 @@ def kollage(stuecke: list, ziel: Path) -> None:
     bild_gesamt = Image.new("RGB", (breite, hoehe), "white")
     for i, stueck in enumerate(stuecke):
         with Image.open(foto_pfad(stueck["foto_gesamt"])) as bild:
-            kachel = ImageOps.fit(bild.convert("RGB"), (KACHEL, KACHEL))
+            kachel = ImageOps.pad(bild.convert("RGB"), (KACHEL, KACHEL), color="white")
         x = ABSTAND + (i % spalten) * (KACHEL + ABSTAND)
         y = ABSTAND + (i // spalten) * (KACHEL + ABSTAND)
         bild_gesamt.paste(kachel, (x, y))
@@ -49,6 +49,9 @@ def main() -> None:
         stuecke = [z for z in csv.DictReader(f) if z["paket"] == paket]
     if not stuecke:
         sys.exit(f"Keine Stücke mit paket = {paket!r} in katalog.csv")
+    # Gruppenfotos (mehrere Stücke, ein Foto) nur einmal zeigen
+    gesehen = set()
+    stuecke = [z for z in stuecke if not (z["foto_gesamt"] in gesehen or gesehen.add(z["foto_gesamt"]))]
 
     ordner = BASIS / "kollagen"
     for alt in ordner.glob(f"{paket}*.jpg"):
