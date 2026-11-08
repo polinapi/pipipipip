@@ -3,7 +3,7 @@
 
 Aufruf:  python3 kollage.py <paketname>
 Nimmt alle Stücke aus katalog.csv mit paket == <paketname> und speichert
-kollagen/<paketname>_1.jpg, _2.jpg, … (je max. 9 Stück, 3x3-Raster,
+kollagen/<paketname>_1.jpg, _2.jpg, … (je max. 9 Stück, quadratisches Raster 1x1 bis 3x3,
 quadratische Kacheln). Bearbeitete Fotos aus fotos/bearbeitet/ werden
 bevorzugt, sonst die aus fotos/komprimiert/.
 """
@@ -26,8 +26,7 @@ def foto_pfad(name: str) -> Path:
 
 
 def kollage(stuecke: list, ziel: Path) -> None:
-    spalten = min(3, len(stuecke))
-    zeilen = math.ceil(len(stuecke) / spalten)
+    spalten = zeilen = math.ceil(math.sqrt(len(stuecke)))  # immer quadratisch
     breite = spalten * KACHEL + (spalten + 1) * ABSTAND
     hoehe = zeilen * KACHEL + (zeilen + 1) * ABSTAND
     bild_gesamt = Image.new("RGB", (breite, hoehe), "white")
