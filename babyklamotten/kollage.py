@@ -32,7 +32,7 @@ def kollage(stuecke: list, ziel: Path) -> None:
     bild_gesamt = Image.new("RGB", (breite, hoehe), "white")
     for i, stueck in enumerate(stuecke):
         with Image.open(foto_pfad(stueck["foto_gesamt"])) as bild:
-            kachel = ImageOps.pad(bild.convert("RGB"), (KACHEL, KACHEL), color="white")
+            kachel = ImageOps.fit(bild.convert("RGB"), (KACHEL, KACHEL))
         x = ABSTAND + (i % spalten) * (KACHEL + ABSTAND)
         y = ABSTAND + (i // spalten) * (KACHEL + ABSTAND)
         bild_gesamt.paste(kachel, (x, y))
